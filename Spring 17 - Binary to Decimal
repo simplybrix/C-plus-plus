@@ -1,0 +1,52 @@
+/*
+Author: Brianna Scott
+Puzzles - #2
+Date: April 8th, 2017
+*/
+ 
+#include<iostream>
+using namespace std;
+ 
+void binary(int num1, int num2)
+{
+    int rem1, rem2;
+ 
+    if (num1 <= 1 && num2 <= 1)
+    {
+        cout << num1 << " " << num2 << endl;
+        return;
+    }
+	else
+    rem1 = num1 % 2;
+	rem2 = num2 % 2;
+	binary(num1/2, num2/2);  
+    cout << rem1;
+	cout << rem2;
+}
+
+int main()
+{
+    int dec1, dec2, bin, a, b, c, d;
+
+	cout << "Enter the number: ";
+	cin >> a;
+	cout << "Enter the number: ";
+	cin >> b;
+    dec1 = a;
+	dec2 = b;
+
+	c = b^(a^b);
+	d = a^b;
+    if (dec1 < 0 && dec2 < 0)
+        cout << dec1 << " and " << dec2 << " are not positive integers." << endl;
+    else
+    {
+        cout << "The binary form of " << dec1 << " and " << dec2  << " is ";
+        binary(dec1, dec2);
+        cout << endl;
+    }
+	cout << "The result of d is: " << d << endl;
+	cout << "The result of c is: " << c << endl;
+	system("pause");
+    return 0;
+}
