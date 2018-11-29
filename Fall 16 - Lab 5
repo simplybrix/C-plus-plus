@@ -1,0 +1,110 @@
+/*
+Author: Brianna Scott
+9/29/16
+Lab 5 - Classes
+*/
+
+//preprocessor directives
+#include <iostream>
+#include <iomanip>
+
+//namespace statement
+using namespace std;
+
+//circleType Class
+class circleType
+{
+	public:
+		//public function prototypes
+		void setRadius(double r);
+		double getRadius();
+		double area();
+		double circumference();
+		//constructor
+		circleType(double r = 0);
+	private:
+		//private function prototypes
+			double radius;
+		
+		
+};
+
+//Outside Class Implementations
+void circleType::setRadius(double r)
+{
+	if (r >= 0)
+		radius = r;
+	else
+		radius = 0;
+}
+
+double circleType::getRadius()
+{
+	return radius;
+}
+
+double circleType::area()
+{
+	return 3.14 * radius * radius; //pi * r * r
+}
+
+double circleType::circumference()
+{
+	return 2 * 3.14 * radius; // 2 * pi * r
+}
+
+circleType::circleType(double r)
+{
+	setRadius(r);
+}
+
+//main function
+int main ()
+{
+	//Enter two variables below
+	double radius1;
+	double radius2;
+	//two class objects
+	circleType circle1;
+	circleType circle2;
+	//Introduction to the Program
+	cout << "Hello." << endl;
+	cout << "Welcome to the C++ program on classes. The objective is " << endl;
+	cout << "to find out the area and circumference of two circles & " << endl;
+	cout << "return which is largest, the smallest, or if they are equal." << endl;
+	cout << "You may begin now." << endl;
+	//Prompt user to enter radius for circle 1
+	cout << "Enter the radius for circle 1: ";
+	cin >> radius1;
+	cout << endl;
+	circle1.setRadius(radius1);
+	//Prompt the user to input radius2 for circle 2
+	cout << "Enter the radius for circle2: ";
+	cin >> radius2;
+	cout << endl;
+	circle2.setRadius(radius2);
+	//Print the results
+	//circle1
+	cout << "===============================" << endl;
+	cout << "Circle 1's Results" << endl;
+	cout << "===============================" << endl;
+	cout << "The radius for circle1 is: " << circle1.getRadius() << endl;
+	cout << "The area for circle1 is: " << circle1.area() << endl;
+	cout << "The circumference for circle1 is: " << circle1.circumference() << endl;
+	//circle2
+	cout << "===============================" << endl;
+	cout << "Circle 2's Results" << endl;
+	cout << "===============================" << endl;
+	cout << "The radius for circle1 is: " << circle2.getRadius() << endl;
+	cout << "The area for circle1 is: " << circle2.area() << endl;
+	cout << "The circumference for circle1 is: " << circle2.circumference() << endl;
+	//compare the two circles
+	if (radius1 < radius2)
+		cout << "Circle1 is smaller than Circle2." << endl;
+	else if (radius1 > radius2)
+		cout << "Circle1 is larger than Circle2." << endl;
+	else
+		cout << "Both of the circles are the same size." << endl;
+	system ("pause");
+	return 0;
+}
