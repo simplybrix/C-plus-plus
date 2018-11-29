@@ -1,0 +1,153 @@
+/*
+Author: B. Scott
+Date: October 20th, 2015
+Purpose: Write a program that reads a person’s name, their birth year, birth month, birth day, current year, current month and current day and computes and prints
+*/
+
+//Program header
+#include <iostream>
+#include <string>
+
+//namespace statement
+using namespace std;
+
+//function prototypes
+void getData(int &name, int & byear, int & bmonth, int &bday, int & cyear, int & cmonth, int & cday);
+void findAge(int byear, int cyear);
+void findDay(int & d, int & m, int & y, int & c, int & D);
+int computeSeason(int bmonth, int bday, string season_of_bday);
+void printOutput(string season_of_bday, string dayBorn);
+
+int main()
+{
+	//declare the variables
+	int name;
+	int byear;
+	int bmonth;
+	int bday;
+	int cyear;
+	int cmonth;
+	int cday;
+	string age;
+	int d;
+	int D;
+	int m;
+	int c;
+	int y;
+	string season_of_bday;
+	string dayBorn;
+
+	//call the functions
+	getData(name, byear, bmonth, bday, cyear, cmonth, cday);
+	findAge(byear, cyear);
+	findDay(d, m, y, c, D);
+	computeSeason(bmonth, bday, season_of_bday);
+	printOutput(season_of_bday, dayBorn);
+	return 0;
+}
+
+
+//the getData function
+void getData(int &name, int & byear, int & bmonth, int &bday, int & cyear, int & cmonth, int & cday)
+{
+	cout << "Enter the name of the person: ";
+	cin >> name;
+	cout << "Enter the birth year. : ";
+	cin >> byear;
+	cout << "Enter the birth month. : ";
+	cin >> bmonth;
+	cout << "Enter the birth day. : ";
+	cin >> bday;
+	cout << "Enter the current month, day, and year. : " << endl;
+	cout << "Year: ";
+	cin >> cyear;
+	cout << "Month: ";
+	cin >> cmonth;
+	cout << "Day : ";
+	cin >> cday;
+}
+
+//the findAge function
+void findAge(int byear, int cyear)
+{
+	string age;
+	age = cyear - byear;
+
+}
+
+
+//the findDay function
+void findDay(int & d, int & m, int & y, int & c, int & D)
+{
+	// d = day of the week
+	cout << "Enter the day of the week you were born. : ";
+	cin >> d;
+	//m = month of year
+	cout << "Enter the month of the year you were born. : ";
+	cin >> m;
+	//y = year of century
+	cout << "Enter the first two digits of the year you were born. : ";
+	cin >> y;
+	//c = century
+	cout << "Enter the last two digits of the year you were born: ";
+	cin >> c;
+	//D = day of the week on which the person was born
+	//declare days of the week
+	int Saturday;
+	int Monday;
+	int Tuesday;
+	int Wednesday;
+	int Thursday;
+	int Friday;
+	int Sunday;
+	D = d + m + 1 + 26 / 10 + y + y / 4 + c / 4 + 5 * c;
+	Saturday = 1;
+	Sunday = 2;
+	Monday = 3;
+	Tuesday = 4;
+	Wednesday = 5;
+	Thursday = 6;
+	Friday = 7;
+}
+
+//findSeason function
+int computeSeason(int bmonth, int bday, string season_of_bday)
+{
+	char summer;
+	char spring;
+	char winter;
+	char fall;
+
+	fall = 0;
+	summer = 0;
+	winter = 0;
+	spring = 0;
+
+	if (bmonth <= 6 && 9 && bday <= 21 && 23)
+	{
+		season_of_bday = summer;
+	}
+	else if (bmonth <= 9 && 12 && bday <= 23 && 23)
+	{
+		season_of_bday = fall;
+	}
+	else if (bmonth <= 12 && 2 && bday <= 23 && 21)
+	{
+		season_of_bday = winter;
+	}
+	else
+	{
+		season_of_bday = spring;
+	}
+
+}
+
+//printOutput function
+void printOutput(string season_of_bday, string dayBorn)
+{
+	string age;
+	cout << "The age is: " << age << endl;
+	cout << "The day you were born is a  " << dayBorn << "." << endl;
+	cout << "The season you were born in is " << season_of_bday << "." << endl;
+	system("pause");
+}
